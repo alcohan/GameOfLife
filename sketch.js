@@ -1,13 +1,30 @@
+// import LabelSlider from "./label-slider.js";
+
 //configuration
 
 let cellSize = 10;
-let fr = 20;
+let fr = 2;
 let paused = false;
 let defaultDensity = 0.5;
 
 function setup() {
-  canvas = createCanvas(1200, 500);
-  canvas.position(0, 100);
+  //layout setup
+  header = createDiv()
+    .class("header-container");
+  options = createDiv()
+    .class("options-container");
+  buttons = createDiv()
+    .class("buttons-container")
+    .parent(options);
+  sliders = createDiv()
+    .class("sliders-container")
+    .parent(options);
+  display = createDiv()
+    .class("display-container");
+
+  canvas = createCanvas(1200, 500)
+    .parent(display);
+
   background(0);
   frameRate(fr);
 
@@ -16,32 +33,26 @@ function setup() {
 
   game = new GameOfLife(cols, rows);
 
-  pauseButton = createButton("Pause");
-  pauseButton.position(20, 10);
-  pauseButton.mousePressed(pauseButtonHandler);
+  // Buttons
+  pauseButton = createButton("Pause")
+    .mousePressed(pauseButtonHandler)
+    .parent(buttons);
 
-  randomizeButton = createButton("Randomize");
-  randomizeButton.position(20, 36);
-  randomizeButton.mousePressed(() => game.randomize(densitySlider.value()));
+  randomizeButton = createButton("Randomize")
+    .mousePressed(() => game.randomize(densitySlider.value()))
+    .parent(buttons);
 
-  clearButton = createButton("Clear");
-  clearButton.position(20, 62);
-  clearButton.mousePressed(() => game.clear());
+  clearButton = createButton("Clear")
+    .mousePressed(() => game.clear())
+    .parent(buttons);
 
-  densitySlider = createSlider(0.1, 0.9, defaultDensity, 0.1);
-  densitySlider.position(240, 36);
-  densityLabel = createSpan(`Density: ${densitySlider.value()}`);
-  densityLabel.position(156, 38);
-  frSlider = createSlider(1, 20, 2, 1);
-  frSlider.position(240, 10);
-  frLabel = createSpan(`Speed: ${frSlider.value()}`);
-  frLabel.position(170, 12);
+  // Sliders
+  densitySlider = new LabelSlider("Density", sliders, 0.1, 0.9, defaultDensity, 0.1).getSlider();
+  frSlider = new LabelSlider("Speed",sliders, 1, 20, fr, 1).getSlider();
 }
 
 function draw() {
   frameRate(frSlider.value());
-  frLabel.html(`Speed: ${frSlider.value()}`);
-  densityLabel.html(`Density: ${densitySlider.value()}`);
   if (!paused) game.step();
   game.draw(cellSize);
 }
