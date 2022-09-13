@@ -32,7 +32,7 @@ function setup() {
   densitySlider.position(240, 36);
   densityLabel = createSpan(`Density: ${densitySlider.value()}`);
   densityLabel.position(156, 38);
-  frSlider = createSlider(1, 20, 10, 1);
+  frSlider = createSlider(1, 20, 2, 1);
   frSlider.position(240, 10);
   frLabel = createSpan(`Speed: ${frSlider.value()}`);
   frLabel.position(170, 12);
