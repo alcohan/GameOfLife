@@ -4,10 +4,20 @@ html, body {
   }
   canvas {
     display: block;
+    z-index: -1;
+    /* opacity:0.2; */
   }
 
-header {
-  padding: 1em;
+.header-container {
+  margin: 3em 2em;
+  padding: 0.5em 1em;
+  background: lightgray;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+.hidden {
+  display: none !important; 
 }
   
 .options-container {
@@ -17,6 +27,7 @@ header {
   border: 1px solid gray;
   border-radius: 4px;
   background: lightgray;
+  opacity: 0.8;
 }
 
 .buttons-container {

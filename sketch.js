@@ -7,33 +7,49 @@ let fr = 2;
 let paused = false;
 let defaultDensity = 0.5;
 
+let w = visualViewport.width;
+let h = visualViewport.height;
+
 function setup() {
   //layout setup
   header = createDiv()
-    .class("header-container");
+  .class("header-container hidden")
+  .html(headerHTML);
   options = createDiv()
-    .class("options-container");
+  .class("options-container hidden");
   buttons = createDiv()
-    .class("buttons-container")
-    .parent(options);
+  .class("buttons-container")
+  .parent(options);
   sliders = createDiv()
-    .class("sliders-container")
-    .parent(options);
+  .class("sliders-container")
+  .parent(options);
   display = createDiv()
-    .class("display-container");
+  .class("display-container");
+  
+  header.html(headerHTML);
 
-  canvas = createCanvas(1200, 500)
-    .parent(display);
-
+  canvas = createCanvas(w, h)
+  .parent(display)
+  .position(0,0);
+  
+  console.log(windowWidth, windowHeight,window.innerWidth,window.innerHeight);
   background(0);
   frameRate(fr);
 
-  cols = width / cellSize;
-  rows = height / cellSize;
+  cols = floor(width / cellSize);
+  rows = floor(height / cellSize);
 
   game = new GameOfLife(cols, rows);
 
   // Buttons
+  infoButton = createButton("Info")
+    .position(4,4)
+    .mousePressed(() => header.toggleClass('hidden'));
+
+  controlButton = createButton("Controls")
+    .position(4,32)
+    .mousePressed(() => options.toggleClass('hidden'));
+
   pauseButton = createButton("Pause")
     .mousePressed(pauseButtonHandler)
     .parent(buttons);

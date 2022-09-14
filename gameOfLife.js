@@ -97,7 +97,6 @@ function make2DArray(cols, rows) {
       else this.grid[col][row] = newCell(this.age);
     }
     setLivingCell(col, row) {
-      let thisCell = this.grid[col][row];
       this.grid[col][row] = newCell(this.age);
     }
   
