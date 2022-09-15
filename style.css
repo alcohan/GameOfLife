@@ -20,6 +20,10 @@ html, body {
   display: none !important; 
 }
   
+.info-button {
+  max-width: 4vw;
+  /* height: 4vh; */
+}
 .options-container {
   display: flex;
   justify-content: space-evenly;

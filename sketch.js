@@ -42,12 +42,15 @@ function setup() {
   game = new GameOfLife(cols, rows);
 
   // Buttons
-  infoButton = createButton("Info")
+
+  infoButton = createImg('info.svg',"Info")
+    .class('info-button')
     .position(4,4)
     .mousePressed(() => header.toggleClass('hidden'));
 
-  controlButton = createButton("Controls")
-    .position(4,32)
+  controlButton = createImg('controls.svg',"Controls")
+    .class('info-button')
+    .position(4,48)
     .mousePressed(() => options.toggleClass('hidden'));
 
   pauseButton = createButton("Pause")
