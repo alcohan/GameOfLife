@@ -7,16 +7,22 @@ html, body {
     z-index: -1;
     /* opacity:0.2; */
   }
-  
+
 main {
+  
+}
+.ui-container {
+  padding: 0 64px;
 }
 
 .header-container {
-  margin: 3em 2em;
+  margin: 3em 0 1em 0;
   padding: 0.5em 1em;
   background: lightgray;
   border-radius: 4px;
   opacity: 0.8;
+  overflow-y:auto;
+  max-height: 70vh;
 }
 
 .hidden {
@@ -25,27 +31,36 @@ main {
 
 .options-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  margin: 1em 10vw;
+  margin: 1em 0;
   border: 1px solid gray;
   border-radius: 4px;
   background: lightgray;
   opacity: 0.8;
+
+  position:fixed;
+  bottom:0px;
+  left: 64px;
+  right: 64px;
+  font-size:18px;
 }
 
 .buttons-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 1em;
+  justify-content: space-evenly;
 }
 .buttons-container button {
   padding: 2px 4px;
   margin: 4px;
+  font-size: 18px;
 }
 
 .sliders-container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   padding: 1em;
 }
 .sliders-container .label-slider {

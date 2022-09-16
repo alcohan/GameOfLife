@@ -1,6 +1,4 @@
 .sidebar {
-    /* display: flex; */
-    flex-direction: column;
     height: 100%;
     width: 0;
     position: fixed;
@@ -10,22 +8,23 @@
     background-color: rgba(17, 17, 17, 0.534);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 90px;
+    padding-top: 80px;
 }
 .sidebar-open {
-    width:80px;
+    width:64px;
 }
   
 
 .sidebar .ui-button {
-    width: 54px;
+    width: 48px;
     position: absolute;
     right: 8px;
+    cursor: pointer;
 }
 
 .sidebar div {
-    /* width: 60px; */
-    height: 54px;
+    width: 48px;
+    height: 48px;
     padding: 8px;
     transition: 0.3s;
 }
@@ -34,10 +33,10 @@
     color: white;
     position: absolute;
     cursor: pointer;
+    size: 64px 64px;
     top: 24px;
-    right: 24px;
-    font-size: 36px;
-    /* margin-left: 40px; */
+    right: 16px;
+    font-size: 32px;
 }
 
 .openbtn {
@@ -47,15 +46,16 @@
     border: none;
     position: absolute;
     top: 24px;
+    left: 16px;
 }
 
-#main {
+/* #main {
     transition: margin-left .5s;
     padding: 16px;
-}
+} */
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+/* @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
-}
+} */
