@@ -12,27 +12,47 @@ let h = visualViewport.height;
 
 function setup() {
   //layout setup
+  main = document.getElementById("main");
+  uiContainer = createDiv()
+    .class('ui-container')
+    .parent(main);
+
+  panel = createDiv()
+    .parent(main)
+    .class("sidebar");
+
   header = createDiv()
-  .class("header-container hidden")
-  .html(headerHTML);
+    .class("header-container hidden")
+    .parent(uiContainer)
+    .html(headerHTML);
   options = createDiv()
-  .class("options-container hidden");
-  buttons = createDiv()
-  .class("buttons-container")
-  .parent(options);
-  sliders = createDiv()
-  .class("sliders-container")
-  .parent(options);
-  display = createDiv()
-  .class("display-container");
-  
+    .parent(uiContainer)
+    .class("options-container hidden");
+    buttons = createDiv()
+      .class("buttons-container")
+      .parent(options);
+    sliders = createDiv()
+      .class("sliders-container")
+      .parent(options);
+
+  function openNav() {
+    panel.toggleClass('sidebar-open');
+    // uiContainer.toggleClass('');
+    menuButton.toggleClass('hidden');
+  }
+  function closeNav() {
+    panel.toggleClass('sidebar-open');
+    // uiContainer.toggleClass('');
+    menuButton.toggleClass('hidden');
+  }
+
   header.html(headerHTML);
 
   canvas = createCanvas(w, h)
-  .parent(display)
+  .parent(main)
   .position(0,0);
   
-  console.log(windowWidth, windowHeight,window.innerWidth,window.innerHeight);
+  // console.log(windowWidth, windowHeight,window.innerWidth,window.innerHeight);
   background(0);
   frameRate(fr);
 
@@ -43,14 +63,24 @@ function setup() {
 
   // Buttons
 
-  infoButton = createImg('info.svg',"Info")
-    .class('info-button')
-    .position(4,4)
+  menuButton = createSpan("☰")
+    .parent(main)
+    .class('openbtn')
+    .mousePressed(openNav);
+
+  closeButton = createSpan("╳")
+    .class('closebtn')
+    .parent(panel)
+    .mousePressed(closeNav);
+
+  infoButton = createImg('assets/info.svg',"Info")
+    .class('ui-button')
+    .parent(createDiv().parent(panel))
     .mousePressed(() => header.toggleClass('hidden'));
 
-  controlButton = createImg('controls.svg',"Controls")
-    .class('info-button')
-    .position(4,48)
+  controlButton = createImg('assets/controls.svg',"Controls")
+    .class('ui-button')
+    .parent(createDiv().parent(panel))
     .mousePressed(() => options.toggleClass('hidden'));
 
   pauseButton = createButton("Pause")

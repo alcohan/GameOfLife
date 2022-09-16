@@ -1,3 +1,5 @@
+let sidebarWidth=120;
+
 let headerHTML = `
 <h1>John Conway&#39;s Game of Life</h1>
 
